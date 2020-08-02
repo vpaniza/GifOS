@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/theme_day.css" id="selectedTheme">
+    <title>GuifOS</title>
+</head>
+<body>
+    <div id="total-container">
+        <div class="top-nav">
+            <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
+        </div>
+    
+        <div class="content-container">
+            <nav>
+                <div class="gif-logo"><img src="./images/gifOF_logo.png" class="logo" alt="logo"></div>
+                <ul class="buttons">
+                    <li class="btn-create">
+                        <div class="button-create">
+                            <div class="crear-guifos">Crear Guifos</div> 
+                        </div>
+                    </li>
+    
+                    <li class="btn-tema"> 
+                        <input class="chbox" type="checkbox" id="chbox"/>
+                        <label for="chbox" class="elegir-tema">
+                            <span class="text">Elegir tema</span> 
+                            <span class="drop-down">
+                                <span class="dd-box">
+                                    <img class="svg-day" alt="dropdown" src="./images/dropdown.svg">
+                                </span>
+                            </span>
+                        </label>
+                        <ul class="tema-nav">
+                            <li class="tema-day">
+                                <input class="radioDay" type="radio" id="radio1" name="temas" onclick="swapTheme()"/>
+                                <label for="radio1" class="tema1"><span class="tema1-span"><u>S</u>ailor Day</span></label>
+                            </li>
+                            <li class="tema-night">
+                                <input class="radioNight" type="radio" id="radio2" name="temas" onclick="swapTheme()"/>
+                                <label for="radio2" class="tema2"><span class="tema2-span"><u>S</u>ailor Night</span></label>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="btn-misGuifos">
+                        <div><u>M</u>is Guifos</div>
+                    </li>
+                </ul>
+            </nav>
+    
+            <div class="searcher">
+                <div class="searcher-header">
+                    <h4>Buscar</h4>
+                </div>
+                <div class="searcher-input">
+                    <div class="fixed-elements">
+                        <input type="text" value="Busca gifs, hashtags, temas, busca lo que quieras…" class="input-text" onkeypress="enterClick(event, this)" onfocus="toggleInputSearchOnFocus(true)">
+                        <a id="buscar-bttn" class="buscar-bttn" onclick="submitSearch()">
+                            <div class="inner-border-bttn">
+                                <div class="lupa-inactive"><img src="./images/lupa_inactive.svg" alt="lupa-inactive" class="lupa-gris"></div>
+                                <div class="lupa-night"><img src="./images/Combined_Shape.svg" alt="lupa-night"></div>
+                                <div class="text-bttn">Buscar</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="search-sugg">
+                        <ul class="s-sugg">
+                            <li class="s-sugg1" id="s-sugg1" onclick="searchAutocompleteTag(this.id)"><div>happy</div></li>
+                            <li class="s-sugg2" id="s-sugg2" onclick="searchAutocompleteTag(this.id)"><div>dance</div></li>
+                            <li class="s-sugg3" id="s-sugg3" onclick="searchAutocompleteTag(this.id)"><div>awesome</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="suggestions">
+                <div class="sugg-header">
+                    <h3>Hoy te sugerimos:</h3>
+                </div>
+                <div class="images-sugg">
+                    <div class="img-suggested-container">
+                        <div class="img-sugg-title">
+                            <h5>#Jonathanvanness</h5>
+                            <img src="./images/button3.svg" alt="button-close">
+                        </div>
+                        <a class="vermas-bttn">
+                            <div class="inner-border">
+                                <div class="text-bttn">Ver más...</div>
+                            </div> 
+                        </a>
+                        <div class="gif-preview">
+    
+                        </div>
+                    </div>
+                    <div class="img-suggested-container">
+                        <div class="img-sugg-title">
+                            <h5>#Jonathanvanness</h5>
+                            <img src="./images/button3.svg" alt="button-close">
+                        </div>
+                        <a class="vermas-bttn">
+                            <div class="inner-border">
+                                <div class="text-bttn">Ver más...</div>
+                            </div>
+                        </a>
+                        <div class="gif-preview">
+    
+                        </div>
+                    </div>
+                    <div class="img-suggested-container">
+                        <div class="img-sugg-title">
+                            <h5>#Jonathanvanness</h5>
+                            <img src="./images/button3.svg" alt="button-close">
+                        </div>
+                        <a class="vermas-bttn">
+                            <div class="inner-border">
+                                <div class="text-bttn">Ver más...</div>
+                            </div>
+                        </a>
+                        <div class="gif-preview">
+    
+                        </div>
+                    </div>
+                    <div class="img-suggested-container">
+                        <div class="img-sugg-title">
+                            <h5>#Jonathanvanness</h5>
+                            <img src="./images/button3.svg" alt="button-close">
+                        </div>
+                        <a class="vermas-bttn">
+                            <div class="inner-border">
+                                <div class="text-bttn">Ver más...</div>
+                            </div>
+                        </a>
+                        <div class="gif-preview">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="tendencias">
+                <div class="tend-header">
+                    <h3>Tendencias:</h3>
+                </div>
+                <div class="images-tend">
+                </div>
+            </div>
+            
+            <div class="search-results-sec" id="resultSection">
+                <div class="search-results-header">
+                    <h3>Lo que se buscó</h3>
+                </div>
+                <div class="search-results-container">
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <script src="./scripts/include.js"></script>  
+    <script src="./scripts/script.js"></script>
+</body>
+</html>

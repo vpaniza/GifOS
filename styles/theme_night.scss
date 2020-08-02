@@ -1,0 +1,1107 @@
+@import "_variables_dark.scss";
+
+@mixin style-pink-bttn {
+    background: $bttn-pink;
+    border: 1px solid $border-color;
+    box-shadow: inset -1px -1px 0 0 $inner-shadow-color, inset 1px 1px 0 0 $white;
+}
+
+@mixin style-pink-bttn-hover {
+    background: $bttn-pink-onhover;
+    box-shadow: inset -1px -1px 0 0 $inner-shadow-color, inset 1px 1px 0 0 $white;
+}
+
+@mixin box-title{
+    background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+    color: $white;
+    line-height: $main-line-height;
+    font-size: $main-font-size;
+}
+
+body{
+    font-family: $font-family;
+    background-color: $background-color;
+}
+
+h3{
+    padding: 7px;
+    font-size: $main-font-size;
+    line-height: $main-line-height;
+    color: $main-font-color;
+}
+
+.top-nav{
+    background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+    box-shadow: 0 1px 0 0 $border-color;
+    div {
+        font-size: 12px;
+        color: $white;
+        line-height: 16px;
+        text-align: left;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 8px;
+    }
+}
+
+nav{
+    display: flex;
+    margin-top: 39px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $button-font-size;
+    color: $white;
+    line-height: $button-line-height;
+    .gif-logo{
+        cursor: pointer;
+    }
+    .buttons{ //ul
+        position: relative;
+        .btn-create, .btn-tema, .btn-misGuifos{ //li
+            @include style-pink-bttn();
+            position: relative;
+            display: inline-block;
+            margin-right: 16px;
+            padding: 2px;
+            cursor: pointer;
+            .button-create{
+                border: 1px dotted transparent;
+                .crear-guifos{
+                    padding: 6px 23.5px;
+                    border: hidden;
+                } 
+            }
+            &:hover{
+                @include style-pink-bttn-hover();
+                .button-create {
+                    border: 1px dotted $border-color;
+                }
+            }
+            a{
+                display: block;
+                color: $main-font-color;
+            }
+        }
+        
+        .btn-tema{
+            position: relative;
+            .tema-nav{
+                position: absolute;
+                clear: both;
+                list-style: none;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height .2s ease-out;
+                z-index: 1;
+                background-color: $box-background;
+                box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+                margin-top:5px;
+                margin-left: -2.5px;
+                cursor: pointer;
+
+                .tema-day, .tema-night{ //li
+                    line-height: $button-line-height;
+                    width: 172px;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                    label {
+                        span{
+                            width: 150px;
+                            padding-top: 7px;
+                            padding-bottom: 7px;
+                            padding-left: 16px;
+                            background: $light-box-background;
+                            border: 1px solid $outside-border-gray;
+                            box-shadow: inset -1px -1px 0 0 $box-shadow, inset 1px 1px 0 0 $white;
+                            color: $main-font-color;
+                        }
+                        .tema1-span{
+                            padding-right: 60px;
+                        }
+                        .tema2-span{
+                            padding-right: 49px;
+                        }
+                    }
+                    input {
+                        display: none;
+                        &:checked ~ label span{
+                            background: $transition-blue;
+                            border: 1px solid #4C2F99;
+                            box-shadow: inset -1px -1px 0 0 #2124B3, inset 1px 1px 0 0 $white;
+                            color:$white;
+                            u {
+                                text-decoration: underline;
+                                color:$white;
+                            }
+                        }  
+                    }
+                }
+                .tema-night{
+                    padding-top: 5px;
+                }
+                &:hover ~ .btn-tema{
+                    @include style-pink-bttn-hover();
+                    .button-create .crear-guifos{
+                        border: 1px dotted $border-color;
+                    }
+                }
+            }
+            .elegir-tema{
+                position: relative;
+                cursor: pointer;
+                .text {
+                    display: inline-block;
+                    padding: 6px 21px;
+                    border: 1px dotted transparent;
+                }
+                .drop-down {
+                    display: inline-block;
+                    padding-left: 2px;
+                    border-left: 1px solid $border-color;
+                    box-shadow: inset 0px 0px 0 0 $inner-shadow-color, inset 1px 0px 0 0 $white;
+                    .dd-box{
+                        padding: 6px 11px;
+                        border: 1px dotted transparent;
+                        filter: invert(100%);
+                    }
+                }
+                &:hover {
+                    .text {
+                        border: 1px dotted $border-color;
+                    }
+                    .drop-down .dd-box{
+                        border: 1px dotted $border-color;
+                    }
+                }
+            }
+            .chbox{
+                display: none;
+                &:checked ~ .tema-nav {
+                    display: block;
+                    max-height: 116px;
+                }  
+            }
+        }
+        .btn-misGuifos {
+            width: 95px;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            a{
+                color: $white;
+            }
+            &:hover{
+                background-color: transparent;
+                border: 1px dotted $white;
+                box-shadow: none;
+                u{
+                    text-decoration: underline;
+                    color: $white;
+                }
+            }
+            &:active{
+                color: #997D97;
+            }
+        }
+    }
+}
+
+.content-container {
+    width: 83.5vw;
+    margin-left: 100px;
+    margin-right: 140px;
+    .searcher {
+        width: 100%;
+        margin: 16px 140px 64px 0px;
+        background-color: $box-background;
+        box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+        .searcher-header {
+            background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+            box-shadow: inset -2px 0 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+            padding: 3px;
+            h4 {
+                color: $white;
+                font-size: $main-font-size;
+                line-height: $main-line-height;
+                padding: 3px;
+            }
+        }
+        .searcher-input {
+            position: relative;
+            width: 100%;
+            padding: 12px 18px 12px 15px;
+            .fixed-elements{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                .input-text{
+                    width: 90%;
+                    background: $white;
+                    border: 1px solid #979797;
+                    box-shadow: inset -2px -2px 0 0 $box-background, inset 2px 2px 0 0 #000000;
+                    left: 0;
+                    color: $box-shadow;
+                    font-family: $font-family;
+                    font-size: $button-font-size;
+                    padding: 13px 16px 13px 16px;
+                }
+                .buscar-bttn {
+                    background: $box-background;
+                    border: 1px solid #808080;
+                    box-shadow: inset -1px -1px 0 0 $box-shadow, inset 1px 1px 0 0 $white;
+                    margin-left: 8px;
+                    padding: 2px;
+                    cursor: pointer;
+                    .inner-border-bttn{
+                        background: $box-background;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        border: 1px dotted transparent;
+                        .lupa-inactive {
+                            display: none;  
+                        }
+                        .lupa-night{
+                            margin: 9px;
+                        }
+                        .text-bttn {
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            margin-right: 13px;
+                            color: $box-shadow;
+                            font-size: $button-font-size;
+                            border: hidden;
+                        }
+                    }
+                }
+                .buscar-bttn-active{
+                    background: $bttn-pink;
+                    border: 1px solid #808080;
+                    box-shadow:inset -1px -1px 0 0 $inner-shadow-color, inset 1px 1px 0 0 white;
+                    margin-left: 8px;
+                    padding: 2px;
+                    cursor: pointer;
+                    .inner-border-bttn{
+                        background: $bttn-pink;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        border: 1px dotted transparent;
+                        .lupa-inactive {
+                            margin: 9px;
+                            filter: invert(100%);
+                        }
+                        .lupa-night{
+                            display: none;
+                        }
+                        .text-bttn {
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            margin-right: 13px;
+                            color: $white;
+                            font-size: $button-font-size;
+                            border: hidden;
+                        }
+                    }
+                    &:active{
+                        background: $bttn-pink-onhover;
+                        .inner-border-bttn{
+                            background: $bttn-pink-onhover;
+                            border: 1px dotted $main-font-color;
+                        }
+                    }
+                }
+            }
+            .search-sugg {
+                display: none;
+                position: absolute;
+                width: 100%;
+                z-index: 20;
+                background: $box-background;
+                box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white; 
+                font-family: $font-family;
+                font-size: $button-font-size;
+                padding: 13px 16px 0px 16px;
+                margin-left: -15px;
+                margin-top: 12px;
+                ul{
+                    li{
+                        background:$light-box-background;
+                        border: 1px solid $outside-border-gray;
+                        box-shadow: inset -1px -1px 0 0 $box-shadow, inset 1px 1px 0 0 $white;
+                        width: 90%;
+                        float: left;
+                        padding: 2px;
+                        margin-bottom: 11px;
+                        div {
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            padding-left: 13px;
+                            font-size: $button-font-size;
+                            line-height: $button-line-height;
+                            color: $main-font-color;
+                            border: 1px dotted transparent;
+                        }
+                        &:hover{
+                            background:$light-box-background;
+                            div{
+                                border: 1px dotted $border-color;
+                                background:$light-box-background;
+                            }
+                        }
+                    }
+                    .s-sugg3{
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    .search-results-sec {
+        width: 100%;
+        margin-top: 16px;
+        .search-results-header {
+            background: $header-background-color;
+            border: 1px solid $header-border-color;
+            box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+            margin-bottom: 8px; 
+        }
+        .search-results-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .s-img-container{
+                height: 298px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                .inner-container{
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    box-shadow: inset -2px -2px 0 0 transparent, inset 2px 2px 0 0 transparent;
+                    overflow: hidden;
+                    padding: 4px;
+                    .hover-border{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        .s-img-title{
+                            display: none;
+                            width: 100%;
+                            position: absolute;
+                            bottom: 0;
+                            z-index: 10;
+                            padding: 3px;
+                            line-height: $main-line-height;
+                            font-size: $main-font-size;
+                            font-weight: 700;
+                            background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+                            color: $white;
+                            h5 {
+                                padding: 3px 2px;
+                                color: $white;
+                                font-weight: 700;
+                                line-height: $main-line-height;
+                                font-size: $main-font-size;
+                            }
+                        }
+                        .search-img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+                &:hover{
+                    .inner-container{
+                        background: $box-background;
+                        box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+                        .hover-border{
+                            border: 1px dotted $border-color;
+                            .s-img-title {
+                                display: block;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+
+    .suggestions {
+        .sugg-header{
+            background: $header-background-color;
+            border: 1px solid $header-border-color;
+            box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+            margin-top: 56px;
+        }
+        .images-sugg {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .img-suggested-container{
+                position: relative;
+                height: 313px;
+                width: 288px;
+                background: $box-background;
+                box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+                margin-top: 16px;
+                margin-bottom: 48px;
+                padding: 2px;
+                .img-sugg-title{
+                    position: absolute;
+                    z-index: 10;
+                    top: 2px;
+                    left: 4px;
+                    width: 280px;
+                    background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    h5 {
+                        padding: 3px 2px;
+                        color: $white;
+                        font-weight: 700;
+                        line-height: $main-line-height;
+                        font-size: $main-font-size;
+                    }
+                    img{
+                        margin: 5px 4px;
+                    }
+                }
+                .vermas-bttn{
+                    position: absolute;
+                    bottom: 15px;
+                    left:11px;
+                    background: $transition-blue;
+                    border: 1px solid #4C2F99;
+                    box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 $white;
+                    height: 34px;
+                    width: 81px;
+                    z-index: 10;
+                    cursor: pointer;
+                    .inner-border{
+                        margin: 2px;
+                        border: 1px dotted transparent;
+                        .text-bttn{
+                            color: $white;
+                            line-height: $main-line-height;
+                            font-size: $main-font-size;
+                            text-align: center;
+                            padding: 4px 6px;
+                        }
+                    }
+                }
+                .gif-preview{
+                    width: 280px;
+                    height: 280px;
+                    position: absolute;
+                    top: 29px;
+                    left: 4px;
+                    .sugg-image{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                &:hover {
+                    .vermas-bttn{
+                        background: #2629CC;
+                    }
+                    .sugg-image{
+                        cursor: pointer;
+                        border: 1px dotted $border-color;
+                    }
+                    .inner-border{
+                    border: 1px dotted $border-color;
+                    }
+                }
+            }
+        }        
+    }
+
+    .tendencias {
+        .tend-header{
+            background: $header-background-color;
+            border: 1px solid $header-border-color;
+            box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+            margin-bottom: 8px;          
+        }
+        .images-tend {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            //align-items: stretch;
+            .trend-div {
+                height: 298px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                .div-image-container {
+                    //position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    box-shadow: inset -2px -2px 0 0 transparent, inset 2px 2px 0 0 transparent;
+                    overflow: hidden;
+                    padding: 4px;
+                    .div-image-border{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                        .div-image-title {
+                            display: none;
+                            width: 100%;
+                            position: absolute;
+                            bottom: 0;
+                            z-index: 10;
+                            padding: 3px;
+                            line-height: $main-line-height;
+                            font-size: $main-font-size;
+                            font-weight: 700;
+                            background-image: linear-gradient(270deg, $transition-pink 0%, $transition-blue 100%);
+                            color: $white;
+                        }
+                    }   
+                }
+                &:hover{
+                    .div-image-container{
+                        background: $box-background;
+                        box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+                        //border: inset 1px dotted $border-color;
+                        .div-image-border{
+                            border: 1px dotted $border-color;
+                            .div-image-title {
+                                display: block;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Style for miGifos
+
+@mixin window-container {
+    display: none;
+    height: 548px;
+    width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    background: $box-background;
+    box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+    position: relative;
+    margin-top: 85px;
+}
+@mixin recording-title {
+    position: absolute;
+    width: 854px;
+    top: 2px;
+    left: 2px;
+    z-index: 10;
+    padding: 3px;
+    padding-left: 4px;
+    font-weight: 700;
+    span{
+        cursor: pointer;
+        img{
+            float: right;
+            margin: 3px 6px 3px;
+        }
+    }
+}
+
+@mixin gif-window-container {
+    position: absolute;
+    height: 434px;
+    width: 832px;
+    top: 37px;
+    left: 8px;
+    background: $white;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 $box-background, inset 2px 2px 0 0 #000000;
+    video{
+        padding: 2px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@mixin button-double {
+    position: absolute;
+    top: 496px;
+    left: 663px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    cursor: pointer;
+}
+
+@mixin timer-style{
+    position: absolute;
+    top: 496px;
+    left: 11px;
+    height: 36px;
+    width: 124px;
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 $box-background, inset 2px 2px 0 0 #000000;
+    .timer-text{
+        font-size: $button-font-size;
+        color: $main-font-color;
+        line-height: $button-line-height;
+        text-align: center;
+        padding-top: 7px;
+    }
+}
+
+.misgifos-container{
+    width: 83.5vw;
+    margin-left: 100px;
+    margin-right: 140px;
+    position: relative;
+    .arrow{
+        position: absolute;
+        top: 10px;
+        left: -36px;
+        display: none;
+        filter: invert(100%);
+    }
+    .crear-guifos-cont{
+        display: none;
+        margin-top: 75px;
+        margin-bottom: 137px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 386px;
+        width: 684px;
+        background: $box-background;
+        box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+        position: relative;
+        .crear-guifos-header{
+            @include box-title();
+            position: absolute;
+            width: 678px;
+            top: 2px;
+            left: 2px;
+            padding-left: 4px;
+        }
+        img{
+            position: absolute;
+            top: 57px;
+            left: 25px;
+        }
+        .text-container{
+            position: absolute;
+            width: 518px;
+            height: 230px;
+            margin-top: 57px;
+            left: 73px;
+            h6{
+                font-size: $button-font-size;
+                color: $main-font-color;
+                line-height: $button-line-height;
+                font-weight: 700;
+                margin-bottom: 17px;
+            }
+            p{
+                font-size: $main-font-size;
+                color: $main-font-color;
+                line-height: 20px;
+                margin-bottom: 10px;
+                b{
+                    font-weight: 700;
+                }
+                i{
+                    font-style: italic;
+                }
+            }
+        }
+        button{
+            position: absolute;
+            width: 144px;
+            height: 36px;
+            top: 314px;
+            color: $white;
+            @include style-pink-bttn();
+            cursor: pointer;
+            div{
+                color: $main-font-color;
+                font-size: $button-font-size;
+                line-height: $main-line-height;
+                padding: 8px;
+                text-align: center;
+            }
+        }
+        .bttn-cancelar{
+            left: 344px;
+            background: $cancel-bttn-color;   
+        }
+        .bttn-comenzar{
+            left: 504px;
+            background: $bttn-pink;
+        }
+    }
+
+    .check-container {
+        @include window-container();
+        .check-title{
+            @include box-title();
+            @include recording-title();
+        }
+        .precapture-container{
+            @include gif-window-container();
+        }
+        .bttn-full{
+            color: $white;
+            @include button-double();
+            .bttn-camara{
+                @include style-pink-bttn();
+                padding: 9px 9px;
+                color: $white;
+            }
+            .bttn-capturar{
+                @include style-pink-bttn();
+                font-size: $button-font-size;
+                line-height: 18px;
+                padding: 9px;
+                width: 144px;
+                text-align: center;
+                color: $white;
+            }
+        }
+    }
+    .capturing-container{
+        @include window-container();
+        .capturing-title{
+            @include box-title();
+            @include recording-title();
+        }
+        .capture-container{
+            @include gif-window-container();
+        }
+        .bttn-listo{
+            @include button-double();
+            .bttn-recording-svg{
+                background: #FF6161;
+                border: 1px solid $border-color;
+                box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+                padding: 8px;
+            }
+            .bttn-listo-text{
+                background: #FF6161;
+                border: 1px solid $border-color;
+                box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+                font-size: $button-font-size;
+                line-height: 18px;
+                text-align: center;
+                width: 144px;
+                color: $white;
+            }
+        }
+        .timer{
+            @include timer-style();
+        }
+    }
+
+    .preview-container{
+        @include window-container();
+        .preview-title{
+            @include box-title();
+            @include recording-title();
+        }
+        .video-container{
+            position: absolute;
+            height: 434px;
+            width: 832px;
+            top: 37px;
+            left: 8px;
+            background: $white;
+            border: 1px solid #979797;
+            box-shadow: inset -2px -2px 0 0 $box-background, inset 2px 2px 0 0 #000000;
+            .preview-gif{
+                padding: 2px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                overflow: hidden;
+            }
+        }
+        .timer{
+            @include timer-style();
+        }
+        .progress-cont{
+            position: absolute;
+            top: 500px;
+            left: 159px;
+            display: flex;
+            flex-flow: row wrap;
+            position: absolute;
+            justify-content: space-between;
+            align-items: center;
+            .h-arrow-cont{
+                @include style-pink-bttn();
+                width: 23px;
+                height: 23px;
+                margin-right: 4px;
+                .h-arrow{
+                    padding: 5px 4px 7px 7px;
+                }
+            }
+            .progress-bar{
+                width: auto;
+                display: flex;
+                flex-flow: row wrap;
+                margin: 0px;
+                padding: 2px;
+                background: $box-shadow;
+                box-shadow: inset 2px 2px 0 0 #FFFCFC, inset -2px -2px 0 0 #000000; 
+                div{
+                    width: 12px;
+                    height: 20px;
+                    background: #999999;
+                    margin-right: 2px;
+                }
+                .pink{
+                    background: $bttn-pink;
+                }
+                .last{
+                    margin-right: 0;
+                }
+            }
+        }
+        .bttn-repeat{
+            position: absolute;
+            @include style-pink-bttn();
+            top: 496px;
+            left: 542px;
+            width: 144px;
+            padding: 9px;
+            text-align: center;
+            background: $cancel-bttn-color;
+            color: $white;
+        }
+        .bttn-upload{
+            @include style-pink-bttn();
+            position: absolute;
+            top: 496px;
+            left: 700px;
+            padding: 9px;
+            text-align: center;
+            width: 144px;
+            color: $white;
+        }
+    }
+    .uploading-container{
+        @include window-container();
+        .uploading-title{
+            @include box-title();
+            @include recording-title();
+        }
+        .uploading-content-container{
+            position: absolute;
+            height: 434px;
+            width: 832px;
+            top: 37px;
+            left: 8px;
+            background: $white;
+            border: 1px solid #979797;
+            box-shadow: inset -2px -2px 0 0 $box-background, inset 2px 2px 0 0 #000000;
+            .globe{
+                position: absolute;
+                top: 174px;
+                left: 406px;
+            }
+            .uploading-text{
+                position: absolute;
+                top: 230px;
+                left: 322.5px;
+                font-weight: 700;
+                color: $main-font-color;
+                text-align: center;
+                line-height: $button-line-height;
+            }
+            .progress-bar-long{
+                position: absolute;
+                top: 291px;
+                left: 257px;
+                width: 324px;
+                display: flex;
+                flex-flow: row wrap;
+                margin: 0px;
+                padding: 2px;
+                background: $box-shadow;
+                box-shadow: inset 2px 2px 0 0 #FFFCFC, inset -2px -2px 0 0 #000000; 
+                div{
+                    width: 12px;
+                    height: 20px;
+                    background: #999999;
+                    margin-right: 2px;
+                }
+                .pink{
+                    background: $bttn-pink;
+                }
+                .last{
+                    margin-right: 0;
+                }
+            }
+            .uploading-time{
+                position: absolute;
+                top: 323px;
+                left: 310px;
+                width: 233px;
+                font-size: 12px;
+                color: rgba($main-font-color,0.64);
+                text-align: center;
+                line-height: 14px;
+            }
+        }
+        .cancel-button{
+            position: absolute;
+            @include style-pink-bttn();
+            background: $cancel-bttn-color;
+            top: 496px;
+            left: 696px;
+            padding: 9px 39.5px; 
+            color: $white;   
+        }
+    }
+    .success-container{
+        @include window-container();
+        height: 391px;
+        width: 721px;
+        margin-bottom: 180px;
+        .success-title{
+            @include box-title();
+            @include recording-title();
+            width: 717px;
+        }
+        .success-preview{
+            @include gif-window-container();
+            width: 371px;
+            height: 196px;
+            top: 54px;
+            left: 24px;
+            .success-img{
+                width: 100%;
+                height: 100%;
+                padding: 2px;
+                object-fit: cover;
+                overflow: hidden;
+            }
+        }
+        .text-and-buttons{
+            position: absolute;
+            top: 76px;
+            left: 419px;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: left;
+            .text-success{
+                font-size: $button-font-size;
+                color: $main-font-color;
+                font-weight: 700;
+                line-height: $button-line-height;
+                margin-bottom: 16px;
+            }
+            .bttn-copy-link{
+                @include style-pink-bttn();
+                background: $cancel-bttn-color;
+                width: 256px;
+                margin-bottom: 14px;
+                padding: 9px;
+                text-align: center;
+                color: $white;
+            }
+            .bttn-download-guifo{
+                @include style-pink-bttn();
+                background: $cancel-bttn-color;
+                width: 256px;
+                padding: 9px;
+                text-align: center;
+                color: $white;
+            }
+        }
+        .bttn-done{
+            position: absolute;
+            @include style-pink-bttn();
+            padding: 9px;
+            width: 144px;
+            text-align: center;
+            top: 311px;
+            left: 531px;
+            color: $white;
+        }
+    }
+        
+    .misgifos-header{ 
+        background: $header-background-color;
+        border: 1px solid #E6BBE2;
+        box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D; 
+        margin-bottom: 8px; 
+        margin-top: 16px;
+    }
+    
+    .mg-section{
+        margin-bottom: 40px;
+        .mg-gifs-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .mg-img-container{
+                height: 298px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                .inner-container{
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    box-shadow: inset -2px -2px 0 0 transparent, inset 2px 2px 0 0 transparent;
+                    overflow: hidden;
+                    padding: 4px;
+                    .hover-border{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        .mg-img{
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                            overflow: hidden;
+                        }
+                    }
+                }
+                &:hover{
+                    .inner-container{
+                        background: $box-background;
+                        box-shadow: inset -2px -2px 0 0 $box-shadow, inset 2px 2px 0 0 $white;
+                        .hover-border{
+                            border: 1px dotted $border-color;
+                        } 
+                    }
+                }
+            }
+        }
+        
+    }   
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/theme_day.css" id="selectedTheme">
+    <title>MisGifos</title>
+</head>
+<body>
+    <div class="top-nav">
+        <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
+    </div>
+    <div class="misgifos-container">
+        <a id="go-back" class="arrow" href="index.html"><img src="./images/arrow.svg" alt="go-back-arrow"></a>
+        <nav>
+            <div class="gif-logo"><img src="./images/gifOF_logo.png" class="logo" alt="logo"></div>
+            <ul class="buttons">
+                <li class="btn-create">
+                    <div class="button-create" onclick="createGuifosButton()">
+                        <div class="crear-guifos">Crear Guifos</div> 
+                    </div>
+                </li>
+
+                <li class="btn-tema"> 
+                    <input class="chbox" type="checkbox" id="chbox"/>
+                    <label for="chbox" class="elegir-tema">
+                        <span class="text">Elegir tema</span> 
+                        <span class="drop-down">
+                            <span class="dd-box">
+                                <img class="svg-day" alt="dropdown" src="./images/dropdown.svg">
+                            </span>
+                        </span>
+                    </label>
+                    <ul class="tema-nav">
+                        <li class="tema-day">
+                            <input class="radioDay" type="radio" id="radio1" name="temas" onclick="swapTheme()"/>
+                            <label for="radio1" class="tema1"><span class="tema1-span"><u>S</u>ailor Day</span></label>
+                        </li>
+                        <li class="tema-night">
+                            <input class="radioNight" type="radio" id="radio2" name="temas" onclick="swapTheme()"/>
+                            <label for="radio2" class="tema2"><span class="tema2-span"><u>S</u>ailor Night</span></label>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="btn-misGuifos" onclick="misGuifosButton()">
+                    <div><u>M</u>is Guifos</div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="crear-guifos-cont">
+            <div class="crear-guifos-header">Crear Guifos</div>
+            <img src="./images/window_img.png" alt="window-image">
+            <div class="text-container">
+                <h6>Aquí podrás crear tus propios guifos</h6>
+                <p>Crear tu <b><i>guifo</i></b> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</p>
+                <p><b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</p>    
+                <p><b>2)</b> Capturar tu momento guifo</p>
+                <p><b>3)</b> Revisar el momento</p>
+                <p><b>4)</b> Listo para subir y compartir!</p>
+                <p>¿Quieres comenzar a crear tu <b><i>guifo</i></b> ahora?</p> 
+            </div>
+            <button class="bttn-cancelar" onclick="cancelGuifosBttn()"><span>Cancelar</span></button>
+            <button class="bttn-comenzar" onclick="comenzarGuifosBttn()"><span>Comenzar</span></button>
+        </div>
+
+        <div class="check-container">
+            <div class="bttn-full" onclick="recordButtonOn()">
+                <div class="bttn-camara"><img src="./images/camera.svg" alt="camera"></div>
+                <div class="bttn-capturar"><div>Capturar</div></div>
+            </div>
+            <div class="check-title">Un Chequeo Antes de Empezar <span class="close-bttn" onclick=""><img src="./images/close.svg" alt="close-button"></span></div>
+            <div class="precapture-container">
+                <video class="precapturing-cont" autoplay></video>
+            </div>
+        </div>
+
+        <div class="capturing-container">
+            <div class="capturing-title">Capturando Tu Guifo<span class="close-bttn-capt" onclick="closeCapturingButtonOn()"><img src="./images/close.svg" alt="close-button"></span></div>
+            <div class="bttn-listo" onclick="listoStopButtonOn()">
+                <button class="bttn-recording-svg"><img src="./images/recording.svg" alt="recording"></button>
+                <button class="bttn-listo-text"><span>Listo</span></button>
+            </div>
+            <div class="timer">
+                <div class="timer-text">00:00:04:28</div>
+            </div>
+            <div class="capture-container">
+                <video class="capturing-cont" autoplay></video>
+            </div>
+        </div>
+
+        <div class="preview-container">
+            <div class="preview-title">Vista Previa</div>
+            <div class="video-container">
+                <img class="preview-gif" alt="created-gif" src="data:,">
+            </div>
+            <div class="timer">
+                <div class="timer-text">00:00:04:28</div>
+            </div>
+            <div class="progress-cont">
+                <div class="h-arrow-cont"><img src="./images/forward.svg" alt="" class="h-arrow"></div>
+                <div class="progress-bar">
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="last"></div>
+                </div>
+            </div>
+            <div class="bttn-repeat" onclick="repeatButtonOn()">Repetir Captura</div>
+            <div class="bttn-upload" onclick="uploadButtonOn()">Subir Guifo</div>
+        </div>
+
+        <div class="uploading-container">
+            <div class="uploading-title">Subiendo Guifo<span class="close-bttn-upload"><img src="./images/close.svg" alt="close-button"></span></div>
+            <div class="uploading-content-container">
+                <div class="globe"><img src="./images/globe_img.png" alt="globe-svg"></div>
+                <div class="uploading-text">Estamos subinedo tu guifo...</div>
+                <div class="progress-bar-long">
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div class="pink"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="last"></div>
+                </div>
+                <div class="uploading-time">Tiempo restante: x minutos</div>
+            </div>
+            <div class="cancel-button">Cancelar</div>
+        </div>
+
+        <div class="success-container">
+            <div class="success-title">Guifo Subido Con Éxito<span class="close-bttn-success" onclick="closeSuccessButtonOn()"><img src="./images/close.svg" alt="close-button"></span></div>
+            <div class="success-preview">
+                <img alt="my-gif" class="success-img" src="data:,">
+            </div>
+            <div class="text-and-buttons">
+                <div class="text-success">Guifo creado con éxito</div>
+                <div class="bttn-copy-link" onclick="copyToClipboard()">Copiar Enlace Guifo</div>
+                <div class="bttn-download-guifo" onclick="downloadGif()">Descargar Guifo</div>
+            </div>
+            <div class="bttn-done" onclick="listoSuccessButtonOn()">Listo</div>
+        </div>
+        
+        <div class="mg-section">
+            <div class="misgifos-header">
+                <h3 id="misgifos-header">Mis guifos</h3>
+            </div>
+            <div class="mg-gifs-container">
+            </div>
+        </div>
+    </div>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/misGuifos.js"></script>
+</body>
+</html>
